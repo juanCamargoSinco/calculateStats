@@ -81,6 +81,26 @@ namespace CalculateKata
 
         }
 
+        [Fact]
+        public void Debe_devolver_5_como_valor_minimo_122_como_valor_maximo_4_como_total_elementos_43_como_promedio_al_calcular_las_estadisticas_de_la_secuencia()
+        {
+            IEnumerable<int> secuenciaNumeros = [5, 15, 30, 122];
+            var estadisticas = new EstadisticasSecuencia()
+            {
+                ValorMinimo = 5,
+                ValorMaximo = 122,
+                ValorPromedio = 43,
+                TotalElementos = 4
+            };
+
+            Assert.Equal(estadisticas.ValorMinimo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMinimo);
+            Assert.Equal(estadisticas.ValorMaximo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
+            Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
+            Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
+
+
+        }
+
     }
 
     public class EstadisticasSecuencia
