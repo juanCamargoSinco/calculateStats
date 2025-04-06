@@ -44,6 +44,14 @@ namespace CalculateKata
             Assert.Equal(1, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
         }
 
+        [Fact]
+        public void Debe_calcular_el_numero_de_elementos_del_arreglo_cuando_el_arreglo_contiene_tres_elementos()
+        {
+            IEnumerable<int> secuenciaNumeros = [10, 0, -5];
+
+            Assert.Equal(3, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
+        }
+
     }
 
     public class ProcesadorSecuencias
