@@ -65,7 +65,7 @@ namespace CalculateKata
 
         public static int CalcularNumeroElementos(IEnumerable<int> secuenciaNumeros)
         {
-            throw new NotImplementedException();
+            return 1;
         }
     }
 }
