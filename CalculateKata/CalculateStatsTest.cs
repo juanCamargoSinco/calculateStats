@@ -3,7 +3,7 @@ namespace CalculateKata
     public class CalculateStatsTest
     {
         [Fact]
-        public void Debe_devolver_error_al_procesar_arreglo_vacio()
+        public void Debe_devolver_error_al_procesar_secuencia_vacia()
         {
             IEnumerable<int> secuenciaNumeros = Array.Empty<int>();
 
@@ -21,7 +21,7 @@ namespace CalculateKata
         ]
         public void Debe_calcular_valor_minimo_de_secuencia(IEnumerable<int> secuenciaNumeros, int valorMinimoSecuencia)
         {
-            Assert.Equal(valorMinimoSecuencia, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
+            Assert.Equal(valorMinimoSecuencia, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMinimo);
         }
 
         [Theory]
@@ -33,7 +33,7 @@ namespace CalculateKata
         ]
         public void Debe_calcular_valor_maximo_de_secuencia(IEnumerable<int> secuenciaNumeros, int valorMaximoSecuencia)
         {
-            Assert.Equal(valorMaximoSecuencia, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
+            Assert.Equal(valorMaximoSecuencia, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
         }
 
         [Theory]
@@ -43,10 +43,10 @@ namespace CalculateKata
             InlineData(new[] { 6, 44, 95, 3000, 4921, 4, 8, 6 }, 8)
 
         ]
-        public void Debe_calcular_el_numero_de_elementos_del_arreglo(IEnumerable<int> secuenciaNumeros, int totalElementos)
+        public void Debe_calcular_el_numero_de_elementos_de_la_secuencia(IEnumerable<int> secuenciaNumeros, int totalElementos)
         {
 
-            Assert.Equal(totalElementos, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
+            Assert.Equal(totalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
         }
 
         [Theory]
@@ -58,7 +58,7 @@ namespace CalculateKata
         ]
         public void Debe_calcular_el_valor_promedio_de_la_secuencia(IEnumerable<int> secuenciaNumeros, double valorPromedio)
         {
-            Assert.Equal(valorPromedio, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
+            Assert.Equal(valorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
         }
 
         [Theory]
@@ -69,64 +69,12 @@ namespace CalculateKata
         ]
         public void Debe_calcular_las_estadisticas_de_la_secuencia(IEnumerable<int> secuenciaNumeros, int valorMinimo, int valorMaximo, double valorPromedio, int totalElementos)
         {
-            var estadisticas = new EstadisticasSecuencia()
-            {
-                ValorMinimo = valorMinimo,
-                ValorMaximo = valorMaximo,
-                ValorPromedio = valorPromedio,
-                TotalElementos = totalElementos
-            };
+            var estadisticas = new EstadisticasSecuencia(valorMinimo, valorMaximo, valorPromedio, totalElementos);
 
             Assert.Equal(estadisticas.ValorMinimo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMinimo);
             Assert.Equal(estadisticas.ValorMaximo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
             Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
             Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
-        }
-    }
-
-    public class EstadisticasSecuencia
-    {
-        public int ValorMinimo { get; set; }
-        public int ValorMaximo { get; set; }
-        public double ValorPromedio { get; set; }
-        public int TotalElementos { get; set; }
-
-    }
-
-    public class ProcesadorSecuencias
-    {
-        public static EstadisticasSecuencia ProcesarSecuencia(IEnumerable<int> secuenciaNumeros)
-        {
-            if (secuenciaNumeros.Any() == false)
-                throw new Exception();
-
-            return new EstadisticasSecuencia()
-            {
-                ValorMinimo = CalcularValorMinimo(secuenciaNumeros),
-                ValorMaximo = CalcularValorMaximo(secuenciaNumeros),
-                ValorPromedio = CalcularValorPromedio(secuenciaNumeros),
-                TotalElementos = CalcularNumeroElementos(secuenciaNumeros)
-            };
-        }
-
-        public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
-        {
-            return secuenciaNumeros.Min();
-        }
-
-        public static int CalcularValorMaximo(IEnumerable<int> secuenciaNumeros)
-        {
-            return secuenciaNumeros.Max();
-        }
-
-        public static int CalcularNumeroElementos(IEnumerable<int> secuenciaNumeros)
-        {
-            return secuenciaNumeros.Count();
-        }
-
-        public static double CalcularValorPromedio(IEnumerable<int> secuenciaNumeros)
-        {
-            return secuenciaNumeros.Average();
         }
     }
 }
