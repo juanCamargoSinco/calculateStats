@@ -6,7 +6,7 @@ namespace CalculateKata
         public void Debe_devolver_error_al_procesar_arreglo_vacio()
         {
             IEnumerable<int> secuenciaNumeros = Array.Empty<int>();
-            
+
 
             Assert.Throws<Exception>(() => ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros));
         }
@@ -26,6 +26,14 @@ namespace CalculateKata
 
             Assert.Equal(2, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
         }
+
+        [Fact]
+        public void Debe_calcular_valor_minimo_de_secuencia_cuando_secuencia_tiene_seis_elementos()
+        {
+            IEnumerable<int> secuenciaNumeros = [6, 9, 15, -2, 92, 0];
+
+            Assert.Equal(-2, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
+        }
     }
 
     public class ProcesadorSecuencias
@@ -37,7 +45,7 @@ namespace CalculateKata
 
         public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
         {
-            if (secuenciaNumeros.Count() == 2) 
+            if (secuenciaNumeros.Count() == 2)
                 return 2;
 
             return 1;
