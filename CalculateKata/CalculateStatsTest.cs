@@ -14,7 +14,7 @@ namespace CalculateKata
 
         [Theory]
         [
-            InlineData(new [] { 1 }, 1),
+            InlineData(new[] { 1 }, 1),
             InlineData(new[] { 5, 2 }, 2),
             InlineData(new[] { 6, 9, 15, -2, 92, 0 }, -2),
 
@@ -29,6 +29,13 @@ namespace CalculateKata
         {
             IEnumerable<int> secuenciaNumeros = [6];
             Assert.Equal(6, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
+        }
+
+        [Fact]
+        public void Debe_calcular_valor_maximo_de_secuencia_cuando_secuencia_tiene_cuatro_elementos()
+        {
+            IEnumerable<int> secuenciaNumeros = [6, 44, 95, 3000];
+            Assert.Equal(3000, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
         }
 
     }
