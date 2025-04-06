@@ -24,6 +24,13 @@ namespace CalculateKata
             Assert.Equal(valorMinimoSecuencia, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
         }
 
+        [Fact]
+        public void Debe_calcular_valor_maximo_de_secuencia()
+        {
+            IEnumerable<int> secuenciaNumeros = [6];
+            Assert.Equal(6, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
+        }
+
     }
 
     public class ProcesadorSecuencias
@@ -36,6 +43,11 @@ namespace CalculateKata
         public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
         {
             return secuenciaNumeros.Min();
+        }
+
+        public static int CalcularValorMaximo(IEnumerable<int> secuenciaNumeros)
+        {
+            throw new NotImplementedException();
         }
     }
 }
