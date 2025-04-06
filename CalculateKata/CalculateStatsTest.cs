@@ -77,8 +77,6 @@ namespace CalculateKata
             Assert.Equal(estadisticas.ValorMaximo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
             Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
             Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
-
-
         }
 
         [Fact]
@@ -97,8 +95,6 @@ namespace CalculateKata
             Assert.Equal(estadisticas.ValorMaximo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
             Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
             Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
-
-
         }
 
     }
@@ -107,7 +103,7 @@ namespace CalculateKata
     {
         public int ValorMinimo { get; set; }
         public int ValorMaximo { get; set; }
-        public int ValorPromedio { get; set; }
+        public double ValorPromedio { get; set; }
         public int TotalElementos { get; set; }
 
     }
@@ -119,7 +115,13 @@ namespace CalculateKata
             if (secuenciaNumeros.Any() == false)
                 throw new Exception();
 
-            return new EstadisticasSecuencia() { TotalElementos = 1, ValorMinimo = 1, ValorPromedio = 1, ValorMaximo = 1 };
+            return new EstadisticasSecuencia()
+            {
+                TotalElementos = CalcularNumeroElementos(secuenciaNumeros),
+                ValorMinimo = CalcularValorMinimo(secuenciaNumeros),
+                ValorPromedio = CalcularValorPromedio(secuenciaNumeros),
+                ValorMaximo = CalcularValorMaximo(secuenciaNumeros)
+            };
         }
 
         public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
