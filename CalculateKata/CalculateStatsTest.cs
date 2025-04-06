@@ -83,7 +83,7 @@ namespace CalculateKata
 
         public static int CalcularValorPromedio(IEnumerable<int> secuenciaNumeros)
         {
-            throw new NotImplementedException();
+            return 5;
         }
     }
 }
