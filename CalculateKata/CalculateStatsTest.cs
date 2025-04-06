@@ -49,28 +49,16 @@ namespace CalculateKata
             Assert.Equal(totalElementos, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
         }
 
-        [Fact]
-        public void Debe_calcular_el_valor_promedio_de_la_secuencia()
+        [Theory]
+        [
+            InlineData(new[] { 5 }, 5),
+            InlineData(new[] { 5, 10, 42 }, 19),
+            InlineData(new[] { 5, 10, 42, 99, 32, 55, 3, 6 }, 31.5)
+
+        ]
+        public void Debe_calcular_el_valor_promedio_de_la_secuencia(IEnumerable<int> secuenciaNumeros, double valorPromedio)
         {
-            IEnumerable<int> secuenciaNumeros = [5];
-
-            Assert.Equal(5, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
-        }
-
-        [Fact]
-        public void Debe_calcular_el_valor_promedio_de_la_secuencia_cuando_la_secuencia_tiene_tres_elementos()
-        {
-            IEnumerable<int> secuenciaNumeros = [5, 10, 42];
-
-            Assert.Equal(19, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
-        }
-
-        [Fact]
-        public void Debe_calcular_el_valor_promedio_de_la_secuencia_cuando_la_secuencia_tiene_ocho_elementos()
-        {
-            IEnumerable<int> secuenciaNumeros = [5, 10, 42, 99, 32, 55, 3, 6];
-
-            Assert.Equal(31.5, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
+            Assert.Equal(valorPromedio, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
         }
 
     }
