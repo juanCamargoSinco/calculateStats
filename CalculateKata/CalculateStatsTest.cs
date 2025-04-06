@@ -38,6 +38,13 @@ namespace CalculateKata
             Assert.Equal(3000, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
         }
 
+        [Fact]
+        public void Debe_calcular_valor_maximo_de_secuencia_cuando_secuencia_tiene_ocho_elementos()
+        {
+            IEnumerable<int> secuenciaNumeros = [6, 44, 95, 3000, 4921, 4, 8, 6];
+            Assert.Equal(4921, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
+        }
+
     }
 
     public class ProcesadorSecuencias
