@@ -19,6 +19,13 @@ namespace CalculateKata
             Assert.Equal(1, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
         }
 
+        [Fact]
+        public void Debe_calcular_valor_minimo_de_secuencia_cuando_secuencia_tiene_dos_elementos()
+        {
+            IEnumerable<int> secuenciaNumeros = [5, 2];
+
+            Assert.Equal(2, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
+        }
     }
 
     public class ProcesadorSecuencias
