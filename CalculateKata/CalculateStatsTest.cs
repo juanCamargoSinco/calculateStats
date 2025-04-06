@@ -61,16 +61,20 @@ namespace CalculateKata
             Assert.Equal(valorPromedio, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
         }
 
-        [Fact]
-        public void Debe_calcular_las_estadisticas_de_la_secuencia()
+        [Theory]
+        [
+            InlineData(new[] { 1 }, 1, 1, 1, 1),
+            InlineData(new[] { 5, 15, 30, 122 }, 5, 122, 43, 4),
+            InlineData(new[] { 0, 8, 44, 33, 62, 20, 73, 12 }, 0, 73, 31.5, 8)
+        ]
+        public void Debe_calcular_las_estadisticas_de_la_secuencia(IEnumerable<int> secuenciaNumeros, int valorMinimo, int valorMaximo, double valorPromedio, int totalElementos)
         {
-            IEnumerable<int> secuenciaNumeros = [1];
             var estadisticas = new EstadisticasSecuencia()
             {
-                ValorMinimo = 1,
-                ValorMaximo = 1,
-                ValorPromedio = 1,
-                TotalElementos = 1
+                ValorMinimo = valorMinimo,
+                ValorMaximo = valorMaximo,
+                ValorPromedio = valorPromedio,
+                TotalElementos = totalElementos
             };
 
             Assert.Equal(estadisticas.ValorMinimo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMinimo);
@@ -78,25 +82,6 @@ namespace CalculateKata
             Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
             Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
         }
-
-        [Fact]
-        public void Debe_devolver_5_como_valor_minimo_122_como_valor_maximo_4_como_total_elementos_43_como_promedio_al_calcular_las_estadisticas_de_la_secuencia()
-        {
-            IEnumerable<int> secuenciaNumeros = [5, 15, 30, 122];
-            var estadisticas = new EstadisticasSecuencia()
-            {
-                ValorMinimo = 5,
-                ValorMaximo = 122,
-                ValorPromedio = 43,
-                TotalElementos = 4
-            };
-
-            Assert.Equal(estadisticas.ValorMinimo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMinimo);
-            Assert.Equal(estadisticas.ValorMaximo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
-            Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
-            Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
-        }
-
     }
 
     public class EstadisticasSecuencia
@@ -117,10 +102,10 @@ namespace CalculateKata
 
             return new EstadisticasSecuencia()
             {
-                TotalElementos = CalcularNumeroElementos(secuenciaNumeros),
                 ValorMinimo = CalcularValorMinimo(secuenciaNumeros),
+                ValorMaximo = CalcularValorMaximo(secuenciaNumeros),
                 ValorPromedio = CalcularValorPromedio(secuenciaNumeros),
-                ValorMaximo = CalcularValorMaximo(secuenciaNumeros)
+                TotalElementos = CalcularNumeroElementos(secuenciaNumeros)
             };
         }
 
