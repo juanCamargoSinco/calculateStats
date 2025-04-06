@@ -49,6 +49,14 @@ namespace CalculateKata
             Assert.Equal(totalElementos, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
         }
 
+        [Fact]
+        public void Debe_calcular_el_valor_promedio_de_la_secuencia()
+        {
+            IEnumerable<int> secuenciaNumeros = [5];
+
+            Assert.Equal(5, ProcesadorSecuencias.CalcularValorPromedio(secuenciaNumeros));
+        }
+
     }
 
     public class ProcesadorSecuencias
@@ -71,6 +79,11 @@ namespace CalculateKata
         public static int CalcularNumeroElementos(IEnumerable<int> secuenciaNumeros)
         {
             return secuenciaNumeros.Count();
+        }
+
+        public static int CalcularValorPromedio(IEnumerable<int> secuenciaNumeros)
+        {
+            throw new NotImplementedException();
         }
     }
 }
