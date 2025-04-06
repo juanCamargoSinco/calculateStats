@@ -36,20 +36,17 @@ namespace CalculateKata
             Assert.Equal(valorMaximoSecuencia, ProcesadorSecuencias.CalcularValorMaximo(secuenciaNumeros));
         }
 
-        [Fact]
-        public void Debe_calcular_el_numero_de_elementos_del_arreglo()
+        [Theory]
+        [
+            InlineData(new[] { 10 }, 1),
+            InlineData(new[] { 10, 0, -5 }, 3),
+            InlineData(new[] { 6, 44, 95, 3000, 4921, 4, 8, 6 }, 8)
+
+        ]
+        public void Debe_calcular_el_numero_de_elementos_del_arreglo(IEnumerable<int> secuenciaNumeros, int totalElementos)
         {
-            IEnumerable<int> secuenciaNumeros = [10];
 
-            Assert.Equal(1, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
-        }
-
-        [Fact]
-        public void Debe_calcular_el_numero_de_elementos_del_arreglo_cuando_el_arreglo_contiene_tres_elementos()
-        {
-            IEnumerable<int> secuenciaNumeros = [10, 0, -5];
-
-            Assert.Equal(3, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
+            Assert.Equal(totalElementos, ProcesadorSecuencias.CalcularNumeroElementos(secuenciaNumeros));
         }
 
     }
