@@ -30,7 +30,7 @@ namespace CalculateKata
 
         public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
         {
-            throw new NotImplementedException();
+            return 1;
         }
     }
 }
