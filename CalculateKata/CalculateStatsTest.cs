@@ -73,7 +73,7 @@ namespace CalculateKata
 
         public static int CalcularNumeroElementos(IEnumerable<int> secuenciaNumeros)
         {
-            return 1;
+            return secuenciaNumeros.Count();
         }
     }
 }
