@@ -11,6 +11,14 @@ namespace CalculateKata
             Assert.Throws<Exception>(() => ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros));
         }
 
+        [Fact]
+        public void Debe_calcular_valor_minimo_de_secuencia()
+        {
+            IEnumerable<int> secuenciaNumeros = [1];
+
+            Assert.Equal(1, ProcesadorSecuencias.CalcularValorMinimo(secuenciaNumeros));
+        }
+
     }
 
     public class ProcesadorSecuencias
@@ -18,6 +26,11 @@ namespace CalculateKata
         public static void ProcesarSecuencia(IEnumerable<int> secuenciaNumeros)
         {
             throw new Exception();
+        }
+
+        public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
+        {
+            throw new NotImplementedException();
         }
     }
 }
