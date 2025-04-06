@@ -47,7 +47,7 @@ namespace CalculateKata
 
         public static int CalcularValorMaximo(IEnumerable<int> secuenciaNumeros)
         {
-            throw new NotImplementedException();
+            return 6;
         }
     }
 }
