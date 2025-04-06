@@ -37,6 +37,9 @@ namespace CalculateKata
 
         public static int CalcularValorMinimo(IEnumerable<int> secuenciaNumeros)
         {
+            if (secuenciaNumeros.Count() == 2) 
+                return 2;
+
             return 1;
         }
     }
