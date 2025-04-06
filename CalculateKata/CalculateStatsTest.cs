@@ -65,13 +65,20 @@ namespace CalculateKata
         public void Debe_calcular_las_estadisticas_de_la_secuencia()
         {
             IEnumerable<int> secuenciaNumeros = [1];
-            var estadisticas = new EstadisticasSecuencia() { 
+            var estadisticas = new EstadisticasSecuencia()
+            {
                 ValorMinimo = 1,
                 ValorMaximo = 1,
                 ValorPromedio = 1,
                 TotalElementos = 1
             };
-            Assert.Equal(estadisticas, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros));
+
+            Assert.Equal(estadisticas.ValorMinimo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMinimo);
+            Assert.Equal(estadisticas.ValorMaximo, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorMaximo);
+            Assert.Equal(estadisticas.ValorPromedio, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).ValorPromedio);
+            Assert.Equal(estadisticas.TotalElementos, ProcesadorSecuencias.ProcesarSecuencia(secuenciaNumeros).TotalElementos);
+
+
         }
 
     }
@@ -82,6 +89,7 @@ namespace CalculateKata
         public int ValorMaximo { get; set; }
         public int ValorPromedio { get; set; }
         public int TotalElementos { get; set; }
+
     }
 
     public class ProcesadorSecuencias
