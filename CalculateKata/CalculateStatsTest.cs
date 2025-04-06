@@ -97,12 +97,9 @@ namespace CalculateKata
             return secuenciaNumeros.Count();
         }
 
-        public static int CalcularValorPromedio(IEnumerable<int> secuenciaNumeros)
+        public static double CalcularValorPromedio(IEnumerable<int> secuenciaNumeros)
         {
-            if (secuenciaNumeros.Count() == 3)
-                return 19;
-
-            return 5;
+            return secuenciaNumeros.Average();
         }
     }
 }
